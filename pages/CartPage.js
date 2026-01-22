@@ -1,0 +1,22 @@
+export class CartPage {
+
+    constructor(page) {
+
+        this.page = page;
+
+        this.listOfAddedItems = page.locator('[data-test="inventory-item"]');
+        this.checkoutButton = page.locator('[data-test="checkout"]');
+        this.continueShoppingButton = page.locator('[data-test="continue-shopping"]');
+
+    }
+
+    async goToCheckout() {
+        await this.checkoutButton.click();
+    }
+
+    async getFirstItemName() {
+        const firstCartItem = this.page.locator('[data-test="inventory-item-name"]').first();
+        return await firstCartItem.textContent();
+    }
+
+}
